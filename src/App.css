@@ -363,3 +363,8 @@ h1 {
     padding-top: 1rem;
   }
 }
+.ad-banner {
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
-import TrophyCabinet from './TrophyCabinet'
+import TrophyCabinet from './pages/TrophyCabinet'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

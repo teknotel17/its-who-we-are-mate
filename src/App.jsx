@@ -16,6 +16,9 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import TrophyCabinet from "./pages/TrophyCabinet";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
+
 
 
 //
@@ -232,9 +235,14 @@ import TrophyCabinet from "./pages/TrophyCabinet";
   </div>
 </div>
 
-            <div className="ad-slot">
-              <p>Ad banner goes here</p>
-            </div>
+<div className="ad-slot">
+  <img
+    src="/ads/no-cup.png"
+    alt="NoCup Finance Ad"
+    className="ad-banner"
+    style={{ width: "100%", maxWidth: "728px", height: "auto" }}
+  />
+</div>
 
             {heroImage && (
               <img src={heroImage} alt="Spurs Banter" className="hero-img" />
@@ -252,8 +260,14 @@ import TrophyCabinet from "./pages/TrophyCabinet";
             <p className="subtext">Spoiler: It’s been a while.</p>
 
             <div className="ad-slot">
-              <p>Ad banner goes here</p>
-            </div>
+  <img
+    src="/ads/spurs-singles.png"
+    alt="Spurs Singles Ad"
+    className="ad-banner"
+    style={{ width: "100%", maxWidth: "728px", height: "auto" }}
+  />
+</div>
+
 
             <a href="/trophy-cabinet" className="trophy-link">
               🏆 Visit Tottenham’s Trophy Cabinet
@@ -331,9 +345,15 @@ import TrophyCabinet from "./pages/TrophyCabinet";
               </div>
             )}
 
-            <div className="ad-slot">
-              <p>Ad banner goes here</p>
-            </div>
+<div className="ad-slot">
+  <img
+    src="/ads/no-cup.png"
+    alt="NoCup Finance Ad"
+    className="ad-banner"
+    style={{ width: "100%", maxWidth: "728px", height: "auto" }}
+  />
+</div>
+
 
             <div className="dvd-section">
               <h2>💿 Spurs’ Greatest Moments: The DVD</h2>
@@ -362,24 +382,36 @@ import TrophyCabinet from "./pages/TrophyCabinet";
             </div>
 
             <footer className="site-footer">
-              <p>
-                © 2025 Spurs Banter App. No trophies were harmed in the making
-                of this site.
-              </p>
-              <p>
-                <a
-                  href="https://github.com/teknotel17/spurs-banter-app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>{" "}
-                | Sponsored by <strong>NoCup Finance™</strong>
-              </p>
-            </footer>
+  <p>
+    © 2025{" "}
+    <a href="https://itswhowearemate.com" target="_blank" rel="noopener noreferrer">
+      itswhowearemate.com
+    </a>{" "}
+    — No trophies were harmed in the making of this site.
+  </p>
+  <p>
+    <a
+      href="https://github.com/teknotel17/its-who-we-are-mate"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View on GitHub
+    </a>{" "}
+    | Sponsored by <strong>NoCup Finance™</strong>
+  </p>
+  <p>
+    <a href="/privacy-policy">Privacy Policy</a> |{" "}
+    <a href="/terms-of-use">Terms of Use</a> |{" "}
+    <a href="mailto:info@itswhowearemate.com">Contact</a>
+  </p>
+</footer>
+
           </div>
         }
       />
+       {/* NEW LEGAL ROUTES */}
+  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+  <Route path="/terms-of-use" element={<TermsOfUse />} />
             {/* 404 FALLBACK ROUTE */}
             <Route path="*" element={<NotFound />} />
     </Routes>
