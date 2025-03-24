@@ -1,7 +1,7 @@
 // src/TrophyCabinet.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { getRandomFact } from "./utils/banterFacts";
+import { getRandomFact } from "../utils/banterFacts";
 
 const TrophyCabinet = () => {
   const [fact, setFact] = useState("");
