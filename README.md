@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="public/banner.png" alt="Spurs Banter App" width="700"/>
+</p>
+
+
 # It's Who We Are Mate ⚪🐓💀
 
 A comedy web app built with Vite + React that lovingly roasts Tottenham Hotspur FC — a club famed for its passion, history, and spectacular lack of silverware.
