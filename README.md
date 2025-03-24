@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./banner.png" alt="Spurs Banter App" width="700"/>
+  <img src="./banner.png" alt="It's Who We Are Mate" width="700"/>
 </p>
 
 
@@ -59,7 +59,8 @@ _These features are 100% optional, 0% necessary, and deeply cursed._
 
 ## 🧔 Author
 
-Made with love, pain, and Firestore by [@teknotel17](https://github.com/teknotel17)
+Made with love, pain, and Firestore by [@teknotel17](https://github.com/teknotel17/its-who-we-are-mate
+)
 
 ---
 
