@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/banner.png" alt="Spurs Banter App" width="700"/>
+  <img src="./banner.png" alt="Spurs Banter App" width="700"/>
 </p>
 
 
