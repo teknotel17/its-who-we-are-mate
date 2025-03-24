@@ -1,9 +1,9 @@
-// src/TrophyCabinet.jsx
+// src/pages/NotFound.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { getRandomFact } from "./utils/banterFacts";
+import { getRandomFact } from "../utils/banterFacts";
 
-const TrophyCabinet = () => {
+const NotFound = () => {
   const [fact, setFact] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
@@ -46,14 +46,13 @@ const TrophyCabinet = () => {
         textAlign: "center",
       }}
     >
-<h1 style={{ fontSize: "3rem", color: "#dc2626" }}>
-  404 - Trophy Cabinet Not Found
-</h1>
+      <h1 style={{ fontSize: "3rem", color: "#dc2626" }}>
+        404 - Trophy Cabinet Not Found
+      </h1>
 
-<p style={{ marginTop: "1rem", fontSize: "1.1rem", color: "#374151" }}>
-  Even when you look for it… there's nothing there. Just like Tottenham's recent silverware.
-</p>
-
+      <p style={{ marginTop: "1rem", fontSize: "1.1rem", color: "#374151" }}>
+        Sorry, this page doesn’t exist… just like Tottenham’s recent silverware.
+      </p>
 
       <Link
         to="/"
@@ -75,7 +74,7 @@ const TrophyCabinet = () => {
           color: "#6b7280",
         }}
       >
-        If you can’t hear anything, click below to honour the silence with sound.
+        If you can’t hear anything, click below to experience the audio heartbreak manually.
       </p>
 
       <audio ref={audioRef} src="/sounds/has-anyone.mp3" preload="auto" />
@@ -110,4 +109,4 @@ const TrophyCabinet = () => {
   );
 };
 
-export default TrophyCabinet;
+export default NotFound;
