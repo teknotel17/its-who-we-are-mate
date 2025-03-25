@@ -248,16 +248,19 @@ import TrophyCabinet from "./pages/TrophyCabinet";
               <img src={heroImage} alt="Spurs Banter" className="hero-img" />
             )}
 
-            <div className="title-bar">
-              <div className="title-side">🐓⚽</div>
-              <h1 className="title-center">
-                How Long Has It Been Since Spurs Won a Trophy?
-              </h1>
-              <div className="title-side">⚽🐓</div>
-            </div>
+<div className="title-banner">
+  <img src="/logo.png" alt="Spurs Logo Left" className="title-logo" />
+  <h1 className="title-text">How Long Has It Been Since Spurs Won a Trophy?</h1>
+  <img src="/logo.png" alt="Spurs Logo Right" className="title-logo" />
+</div>
 
-            <h2 className="timer">{timeSinceTrophy}</h2>
-            <p className="subtext">Spoiler: It’s been a while.</p>
+
+<div className="timer-box">
+  <h2 className="trophy-timer">
+    ⏱️ {timeSinceTrophy}
+  </h2>
+  <p className="subtext">Spoiler: It’s been a while.</p>
+</div>
 
             <div className="ad-slot">
   <img
@@ -280,10 +283,18 @@ import TrophyCabinet from "./pages/TrophyCabinet";
                   showFunnyStat();
                 }}
               >
-                Give me a funny stat
+                  Give me a spurs funny
+
               </button>
 
-              {funnyStat && <p className="stat-text">{funnyStat}</p>}
+              {funnyStat && (
+ <p className="stat-text">
+ <span role="img" aria-label="funny">🤣</span>
+ {funnyStat}
+</p>
+
+)}
+
 
               <button
                 className="result-button"
@@ -320,30 +331,36 @@ import TrophyCabinet from "./pages/TrophyCabinet";
             </div>
 
             {randomSigning && (
-              <div className="signing-card">
-                <img
-                  src={randomSigning.image}
-                  alt={randomSigning.name}
-                  className="signing-img"
-                />
-                <h3>
-                  <a
-                    href={randomSigning.wiki}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {randomSigning.name}
-                  </a>
-                </h3>
-                <p>📅 Year Signed: {randomSigning.year}</p>
-                <p>💰 Fee: {randomSigning.fee}</p>
-                <p>
-                  📊 Apps: {randomSigning.apps} | Goals: {randomSigning.goals} | Assists:{" "}
-                  {randomSigning.assists}
-                </p>
-                <p className="signing-bio">"{randomSigning.bio}"</p>
-              </div>
-            )}
+  <div className="signing-card">
+    <img
+      src={randomSigning.image}
+      alt={randomSigning.name}
+      className="signing-img"
+    />
+
+    <h3>
+      <a
+        href={randomSigning.wiki}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {randomSigning.name}
+      </a>
+    </h3>
+
+    <div className="signing-stats">
+      <p>📅 Year Signed: {randomSigning.year}</p>
+      <p>💰 Fee: {randomSigning.fee}</p>
+      <p>
+        📊 Apps: {randomSigning.apps} | Goals: {randomSigning.goals} | Assists:{" "}
+        {randomSigning.assists}
+      </p>
+    </div>
+
+    <p className="signing-bio">"{randomSigning.bio}"</p>
+  </div>
+)}
+
 
 <div className="ad-slot">
   <img
@@ -355,29 +372,38 @@ import TrophyCabinet from "./pages/TrophyCabinet";
 </div>
 
 
-            <div className="dvd-section">
-              <h2>💿 Spurs’ Greatest Moments: The DVD</h2>
+<div className="dvd-section">
+<div className="dvd-header">
+  <h2>💿 Spurs’ Greatest Moments: The DVD</h2>
+  <div className="dvd-badge">Limited Edition</div>
+</div>
+
+
               <button
-                className="dvd-button"
+                className="stat-button"
                 onClick={() => {
                   showRandomSpursClip();
                 }}
               >
-                Play a classic moment
+                Play spurs classic dvd's
               </button>
 
               {spursClip && (
-                <div className="video-wrapper">
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src={spursClip}
-                    title="Spurs Moment"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+               <div className="video-wrapper">
+               <div className="tv-frame">
+                 <iframe
+                   width="100%"
+                   height="315"
+                   src={spursClip}
+                   title="Spurs Moment"
+                   frameBorder="0"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                   allowFullScreen
+                 ></iframe>
+               </div>
+               <div className="dvd-tray">💿 Spurs DVD Player 3000™</div>
+             </div>
+             
               )}
             </div>
 

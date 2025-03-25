@@ -7,13 +7,14 @@
 
 body {
   min-height: 100vh;
-  background-color: #ffffff; /* White background */
+  background: linear-gradient(135deg, #0f1a4d, #1c2f80); /* Navy gradient */
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #111827;
 }
+
 
 /* Main Container */
 .container {
@@ -29,47 +30,46 @@ body {
 
 /* Header Banner */
 .site-header {
-  width: 100%;
-  background: linear-gradient(to right, #132257, #1c2f80);
-  padding: 1rem 2rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  background: linear-gradient(to right, #0f172a, #1c2f80);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  border-radius: 12px;
+  border-left: 5px solid #facc15; /* 🟡 Yellow edge to the left */
+  border-bottom: 5px solid #facc15;
 }
+
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  max-width: 1000px;
-  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .header-logo {
-  height: 100px;
+  height: 60px;
   width: auto;
-  flex-shrink: 0;
-}
-
-.header-text {
-  text-align: center;
-  flex: 1;
+  margin-bottom: 0.5rem;
 }
 
 .header-text h1 {
-  font-size: 2.5rem;
-  color: white;
+  font-size: 3rem;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 0;
-  font-weight: 800;
 }
 
 .header-text p {
-  font-size: 1.1rem;
-  color: white;
-  margin-top: 5px;
+  font-size: 0.9rem;
   font-style: italic;
+  color: #cbd5e1;
+  margin: 0;
 }
+
 
 /* Ad Slot */
 .ad-slot {
@@ -105,28 +105,32 @@ h1 {
 }
 
 .hero-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 12px;
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Trophy Cabinet Link */
 .trophy-link {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   color: #1e3a8a;
   font-weight: bold;
   text-decoration: none;
+  font-family: 'Fira Mono', monospace; /* retro ironic font */
+  text-align: center;
 }
 
 .trophy-link:hover {
   color: #2563eb;
   text-decoration: underline;
 }
+
 
 /* Buttons */
 .button-stack {
@@ -139,7 +143,8 @@ h1 {
 
 .stat-button,
 .result-button,
-.signing-button {
+.signing-button,
+.dvd-button {
   width: 80%;
   max-width: 400px;
   padding: 1rem;
@@ -150,6 +155,10 @@ h1 {
   transition: background-color 0.3s ease;
   color: white;
   background-color: #1e40af;
+  font-family: 'Barlow Semi Condensed', sans-serif; /* ✅ NEW FONT */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .stat-button:hover,
@@ -159,61 +168,91 @@ h1 {
 }
 
 .stat-text {
-  font-size: 1.2rem;
-  color: #1e293b;
-  margin-top: 1rem;
-  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #0f172a; /* Deep navy-grey */
+  background-color: #f8fafc;
+  border-left: 4px solid #facc15;
+  border-bottom: 4px solid #facc15;
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  border-radius: 6px;
+  line-height: 1.6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
+
 
 /* Match Result */
 .match-box {
-  background-color: #f3f4f6;
-  padding: 1.5rem;
-  border-radius: 12px;
+  background-color: #f8fafc;
+  border-left: 4px solid #facc15;
+  border-bottom: 4px solid #facc15;
+  padding: 1rem;
+  border-radius: 6px;
   margin-top: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  text-align: center;
-}
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Fira Mono', monospace;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+  }
+  
+  .match-box:hover {
+    transform: scale(1.015);
+  }
+  
 
 .match-score {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  color: #111827;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
 }
 
 .match-details {
   font-size: 1rem;
-  color: #374151;
-  margin-top: 0.5rem;
+  color: #1f2937;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .match-link {
   display: inline-block;
-  margin-top: 0.75rem;
+  margin-top: 0.8rem;
+  color: #2563eb;
+  font-weight: 600;
   text-decoration: none;
-  color: #1d4ed8;
-  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .match-link:hover {
   text-decoration: underline;
 }
 
+
 /* Signing Card */
 .signing-card {
-  background-color: #f9fafb;
+  background-color: #f8fafc;
+  border-left: 4px solid #facc15;
+  border-bottom: 4px solid #facc15;
   margin-top: 2rem;
   padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
   text-align: center;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  border-top: 6px solid #1e40af;
-  animation: fadeInUp 0.6s ease-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: transform 0.3s ease;
 }
+
+
 
 .signing-card:hover {
   transform: scale(1.015);
@@ -230,8 +269,22 @@ h1 {
 .signing-bio {
   margin-top: 1rem;
   font-style: italic;
+  font-size: 0.9rem;
   color: #4b5563;
 }
+
+.signing-card h3 {
+  font-family: 'Fira Mono', monospace;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  margin: 0.5rem 0;
+}
+.signing-stats p {
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+  color: #1f2937;
+}
+
 
 /* Fade-in animation */
 @keyframes fadeInUp {
@@ -268,26 +321,34 @@ h1 {
 
 /* Footer */
 .site-footer {
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #9ca3af;
+  font-size: 0.95rem;
   text-align: center;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 1.5rem;
+  color: #1f2937; /* Dark slate grey — very readable on white */
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  border-top: 1px solid #d1d5db;
+  background-color: transparent;
+  line-height: 1.6;
 }
 
 .site-footer a {
-  color: #93c5fd;
+  color: #1e3a8a; /* Deep navy link */
   text-decoration: none;
+  font-weight: 500;
 }
 
 .site-footer a:hover {
+  color: #2563eb; /* Brighter hover */
   text-decoration: underline;
 }
 
 .site-footer strong {
-  color: #f87171;
+  color: #facc15; /* Tailwind’s “yellow-400” */
+  font-weight: 600;
 }
+
+
+
 
 /* Mobile Tweaks */
 @media (max-width: 768px) {
@@ -368,3 +429,158 @@ h1 {
   margin: 0 auto;
   display: block;
 }
+.title-banner {
+  background: linear-gradient(to right, #1e3a8a, #1c2f80);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: white;
+  margin-top: 1.5rem;
+  text-align: center;
+  border-left: 5px solid #facc15; /* 🟡 Yellow edge to the left */
+  border-bottom: 5px solid #facc15;
+  flex-wrap: nowrap; /* 🔒 Don't let it wrap */
+  overflow-x: auto;   /* 👀 Allows scrolling if it *must* */
+}
+
+
+.title-text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Fira Mono', monospace;
+  max-width: 600px;
+  line-height: 1.3;
+}
+
+
+
+
+.title-logo {
+  width: 40px;
+  min-width: 40px;
+  height: auto;
+  flex-shrink: 0; /* Don't let them squish or disappear */
+}
+
+
+.timer-box {
+  background-color: #f1f5f9;
+  border: 2px dashed #1e3a8a;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+  max-width: 600px;
+}
+
+.trophy-timer {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e40af;
+}
+.dvd-header {
+  background: linear-gradient(to right, #3b82f6, #1e3a8a);
+  padding: 1rem 1.5rem;
+  border-left: 5px solid #facc15;
+  border-bottom: 5px solid #facc15;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.dvd-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.dvd-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: #facc15;
+  color: #1e3a8a;
+  font-size: 0.55rem;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.stat-text {
+  font-size: 1.3rem; /* Slightly reduced to improve rendering */
+  font-weight: 500; /* Fira Mono looks better around 400–500 */
+  font-family: 'Fira Mono', monospace;
+  color: #0f172a;
+  background-color: #f8fafc;
+  border-left: 4px solid #facc15;
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  border-radius: 6px;
+  line-height: 1.7; /* Make it breathe more */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+    transform: translateY(1px); /* Optional tweak if needed */
+  }
+  
+
+
+.stat-text:hover {
+  transform: scale(1.015);
+}
+
+.typed-text {
+  display: inline-block;
+  animation: typewriter 2.5s steps(40) 1 normal both;
+  border-right: 2px solid #1e3a8a;
+  padding-right: 5px;
+  margin-left: 0.5rem;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.video-wrapper {
+  margin-top: 1.5rem; /* adds spacing between button and video */
+}
+.tv-frame {
+  border: 10px solid #1f2937; /* dark grey border like a TV bezel */
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #000; /* screen surround */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.dvd-tray {
+  margin-top: 0.5rem;
+  background-color: #1e3a8a;
+  color: #facc15;
+  padding: 0.5rem 1rem;
+  font-family: 'Fira Mono', monospace;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
