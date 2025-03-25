@@ -96,6 +96,8 @@ function App() {
   const [dvdClips, setDvdClips] = useState([]);
   const [spursClip, setSpursClip] = useState("");
   const [prevIndex, setPrevIndex] = useState(null);
+  const [currentClipIndex, setCurrentClipIndex] = useState(0);
+
 
 
   //
@@ -218,14 +220,18 @@ setHeroImages(heroData);
     playRandomSound();
   };
 
-  const showRandomSpursClip = () => {
+  const showNextSpursClip = () => {
     if (dvdClips.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * dvdClips.length);
-    const rawURL = dvdClips[randomIndex];
+  
+    const nextIndex = (currentClipIndex + 1) % dvdClips.length;
+    setCurrentClipIndex(nextIndex);
+  
+    const rawURL = dvdClips[nextIndex];
     const formatted = createEmbedURL(rawURL);
     setSpursClip(formatted);
-    playRandomSound();
+    playRandomSound(); // keep this if you still want a sound on each click
   };
+  
   
 
   //
@@ -465,7 +471,7 @@ import TrophyCabinet from "./pages/TrophyCabinet";
               <button
                 className="stat-button"
                 onClick={() => {
-                  showRandomSpursClip();
+                  showNextSpursClip();
                 }}
               >
                 Play spurs classic dvd's
