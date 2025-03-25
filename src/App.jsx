@@ -19,6 +19,10 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 
+// Vercel Analytics
+import { Analytics } from '@vercel/analytics/react';
+
+
 function createEmbedURL(youtubeURL) {
   let videoID;
   
@@ -510,6 +514,8 @@ import TrophyCabinet from "./pages/TrophyCabinet";
     <a href="mailto:info@thehistoryofthetottenham.com">Contact</a>
   </p>
 </footer>
+<Analytics />
+
 
 </div>
     </>
