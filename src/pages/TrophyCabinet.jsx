@@ -109,14 +109,14 @@ const TrophyCabinet = () => {
       <footer className="site-footer">
   <p>
     © 2025{" "}
-    <a href="https://itswhowearemate.com" target="_blank" rel="noopener noreferrer">
-      itswhowearemate.com
+    <a href="https://thehistoryofthetottenham.com" target="_blank" rel="noopener noreferrer">
+    thehistoryofthetottenham.com
     </a>{" "}
     — No trophies were harmed in the making of this site.
   </p>
   <p>
     <a
-      href="https://github.com/teknotel17/its-who-we-are-mate"
+      href="https://github.com/teknotel17/the-history-of-the-tottenham"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -127,7 +127,7 @@ const TrophyCabinet = () => {
   <p>
     <a href="/privacy-policy">Privacy Policy</a> |{" "}
     <a href="/terms-of-use">Terms of Use</a> |{" "}
-    <a href="mailto:info@itswhowearemate.com">Contact</a>
+    <a href="mailto:info@thehistoryofthetottenham.com">Contact</a>
   </p>
 </footer>
 

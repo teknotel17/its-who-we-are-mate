@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
       <div style={{ maxWidth: "800px" }}>
         <h1 style={{ fontSize: "2rem", color: "#1e3a8a" }}>Privacy Policy</h1>
         <p>
-          At <strong>itswhowearemate.com</strong>, we take your privacy as seriously as Spurs take winning trophies.
+          At <strong>thehistoryofthetottenham.com</strong>, we take your privacy as seriously as Spurs take winning trophies.
         </p>
         <p>
           We may collect data like cookies, analytics, and other anonymous information. This data is used to serve Google ads, measure performance, and keep the roast going.
@@ -46,14 +46,14 @@ const PrivacyPolicy = () => {
         <footer className="site-footer" style={{ marginTop: "3rem" }}>
           <p>
             © 2025{" "}
-            <a href="https://itswhowearemate.com" target="_blank" rel="noopener noreferrer">
-              itswhowearemate.com
+            <a href="https://thehistoryofthetottenham.com" target="_blank" rel="noopener noreferrer">
+            thehistoryofthetottenham.com
             </a>{" "}
             — No trophies were harmed in the making of this site.
           </p>
           <p>
             <a
-              href="https://github.com/teknotel17/its-who-we-are-mate"
+              href="https://github.com/teknotel17/the-history-of-the-tottenham"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
           <p>
             <a href="/privacy-policy">Privacy Policy</a> |{" "}
             <a href="/terms-of-use">Terms of Use</a> |{" "}
-            <a href="mailto:info@itswhowearemate.com">Contact</a>
+            <a href="mailto:info@thehistoryofthetottenham.com">Contact</a>
           </p>
         </footer>
       </div>

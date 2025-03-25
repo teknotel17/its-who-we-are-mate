@@ -1,74 +1,108 @@
 <p align="center">
-  <img src="./banner.png" alt="It's Who We Are Mate" width="700"/>
+  <img src="./banner.png" alt="The History of the Tottenham" width="700"/>
 </p>
 
+# The History of the Tottenham ⚪📉⚰️
 
-# It's Who We Are Mate ⚪🐓💀
+A rigorously documented multimedia museum chronicling the long and storied tradition of nearly winning things. This interactive web application offers an exhaustive exploration of Tottenham Hotspur’s contribution to comedy, footballing folklore, and fourth-place finishes.
 
-A comedy web app built with Vite + React that lovingly roasts Tottenham Hotspur FC — a club famed for its passion, history, and spectacular lack of silverware.
-
-> "404 - Trophy Cabinet Not Found"  
-> – the only honest error message Spurs fans can agree on.
-
----
-
-## 🔥 Features
-
-- ⏱️ **Live trophy drought timer** since Spurs last won silverware (2008 – the year Iron Man came out)
-- 🤡 **Random funny stats** about Spurs’ historic banter moments
-- 💀 **Embarrassing result generator** with links to real tragic match reports
-- 📸 **"Signing of the Season" card drawer** – complete with stats, bios, and disappointment
-- 💿 **Spurs’ Greatest Moments: The DVD** – handpicked YouTube lowlights
-- 🎻 **Sad sound effects** (Trombone, Violin, “Who we are mate”) to enrich your emotional suffering
-- 🧠 Fully **mobile responsive** & **AdSense-ready** for monetising the trauma
-- 🏆 **Trophy Cabinet 404 Page** – because there’s literally nothing there
-- 📜 **Banterscripts & Stat Jokes** stored in Firestore, for maximum reusability
+> “To dare is to bottle it in the semi-final.”
+> – Tottenham Hotspur, 1882–Eternity
 
 ---
 
-## 🧪 Tech Stack
+## 📚 Featured Exhibits
 
-- React + Vite
-- Firebase (Firestore & Auth)
-- Tailored CSS (no Bootstrap – we’re not Spurs fans)
-- Deployed via Vercel
-- Managed in Git (as tightly as Spurs' defence isn't)
+- ⏱️ **Trophy Drought Timer**  
+  A live digital chronograph counting the years, days, hours, and seconds since Tottenham last touched a trophy in anger (2008, a time before TikTok, VAR, and some of their fans were even born).
 
----
+- 🤡 **Statistical Banter Engine**  
+  A button that delivers cold, hard numbers — each one a dagger of reality. Powered by data, sarcasm, and Spurs' inability to win when it matters.
 
-## 🌐 Live Site
+- 💀 **The Collapse Archive™**  
+  An interactive collection of famous faceplants, bottlings, and European exits — all lovingly linked to actual news reports for historical verification and viewer despair.
 
-Available at: [https://itswhowearemate.com](https://itswhowearemate.com)
+- 🎭 **Signings of the Season**  
+  Explore a carousel of flops, frauds, and faded hopes. Each card lovingly designed in the style of Top Trumps — just without the "trump" part.
 
----
+- 💿 **Spurs’ Greatest Moments: The DVD**  
+  A rotating playlist of awkward highlights, calamity goals, and tragic commentary — all available in glorious 480p, just like the glory days.
 
-## ⚰️ 100% Genuine Roadmap
+- 🎺 **Auditory Grief Buttons**  
+  Tap to experience sad trombones, violin loops, and a mysterious Australian man saying “who mate?” whenever the site updates.
 
-_These features are 100% optional, 0% necessary, and deeply cursed._
-
-- 🎮 **Ange Postecoglou’s Set Piece Master** — a JavaScript tower defence game where you concede from every corner
-- 🕶️ **The Tottenham Hotspur VR Trophy Room Tour** — bring your own headset and disappointment
-- 🧀 **The Interactive Cheese Room Experience™** — click cheese, get tears
-- 📉 **Trophy Stock Market Simulator** — buy low, cry lower
-- 🛒 **Spurs Shop RNG** — every time you buy a jersey, you get a different underwhelming player name
-- 🧠 **SpursGPT** — an AI that insists “it’s our year” no matter what
-- 🧼 **Daniel Levy Simulator** — say "no" to every signing
-- 🧟 **Harry Kane Ghost Mode** — he haunts the penalty area but never returns
+- 🏆 **Trophy Cabinet Simulator (404)**  
+  Explore the emptiest interactive experience on the web. Not found — much like their silverware since 1991.
 
 ---
 
-## 🧔 Author
+## 🧪 Tech Stack (more reliable than Spurs' back four)
 
-Made with love, pain, and Firestore by [@teknotel17](https://github.com/teknotel17/its-who-we-are-mate
-)
-
----
-
-## ⚖️ Legal & Copyright
-
-© 2025 [itswhowearemate.com](https://itswhowearemate.com)  
-No trophies were harmed in the making of this app. No parades were needed.
+- **React + Vite** – Fast. Unlike Tottenham.
+- **Firebase** – For storing your jokes and disappointment in the cloud.
+- **Custom CSS** – Because unlike Spurs, we finish what we start.
+- **Vercel** – Deploying updates faster than Daniel Levy bins managers.
+- **GitHub** – Version-controlled, unlike Tottenham's midfield.
 
 ---
 
-> This README proudly contains more silver than Tottenham's actual cabinet.
+## 🌍 Live Website
+
+Wallow with us at:  
+**[https://thehistoryofthetottenham.com](https://thehistoryofthetottenham.com)**  
+(Optimised for mobile, tablets, and Spursy-sized screens)
+
+---
+
+## 📈 Feature Roadmap (subject to collapse under pressure)
+
+- 🧠 **Postecoglou’s Set Piece Memory Game**  
+  Try to recall any corner Tottenham defended properly this season. Impossible mode: Europa Conference League away.
+
+- 🧀 **The Interactive Cheese Room Experience™**  
+  Click to wander through a luxury suite that definitely exists. Honest.
+
+- 🧮 **Cost-per-Trophy Calculator**  
+  Enter stadium cost, ticket prices, and shirt sales. Output = depression.
+
+- 🧥 **Kit Regret Simulator**  
+  See your new signing fail in real time. Refund not available.
+
+- 🎮 **Levy Transfer Negotiation Simulator**  
+  Experience the thrill of nearly buying someone for 8 straight weeks.
+
+- 💻 **VR Trophy Tour**  
+  Stand inside an empty cabinet. Echo included.
+
+- 📢 **Delusion Generator 3000™**  
+  Hit refresh to hear “This is our year!” in 1,000 dialects.
+
+- 🕯️ **Harry Kane Eternal Flame**  
+  A candle that burns forever in the vague direction of Munich.
+
+---
+
+## 👨‍🏫 Curated By
+
+Historical integrity and banter maintained by  
+**[@teknotel17](https://github.com/teknotel17/the-history-of-the-tottenham)**
+
+---
+
+## 🧾 Legal + AdSense Readiness
+
+- Privacy Policy, Terms of Use, and broken dreams included.
+- Fully compliant, SEO-ready, and extremely sarcastic.
+- Contact: **info@thehistoryofthetottenham.com**
+
+---
+
+## ⚠️ Disclaimers
+
+All images of trophies are for illustrative purposes only.  
+No Spurs fans were harmed in the making of this site — emotionally, anyway.  
+This project is a satire. Which is just another way of saying "Tottenham."
+
+---
+
+> “The History of the Tottenham isn’t written in silver — it’s written in tears, tweets, and DVDs.”

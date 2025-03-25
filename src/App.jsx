@@ -19,6 +19,43 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 
+function createEmbedURL(youtubeURL) {
+  let videoID;
+  
+  try {
+    // Handle youtu.be format
+    if (youtubeURL.includes('youtu.be/')) {
+      videoID = youtubeURL.split('youtu.be/')[1].split('?')[0];
+    }
+    // Handle youtube.com/watch format
+    else if (youtubeURL.includes('youtube.com/watch')) {
+      const urlParams = new URLSearchParams(new URL(youtubeURL).search);
+      videoID = urlParams.get('v');
+    }
+    // Handle youtube.com/shorts format
+    else if (youtubeURL.includes('youtube.com/shorts/')) {
+      videoID = youtubeURL.split('youtube.com/shorts/')[1].split('?')[0];
+    }
+    // Handle direct video ID (like in your first example)
+    else if (youtubeURL.includes('youtube.com/')) {
+      // Extract everything after youtube.com/ and before ?
+      videoID = youtubeURL.split('youtube.com/')[1].split('?')[0];
+    }
+    // Default case
+    else {
+      // Assume the URL itself might be just the ID
+      videoID = youtubeURL.trim();
+    }
+
+    // Clean up any remaining parameters or slashes
+    videoID = videoID.split('/')[0].split('?')[0];
+    
+    return `https://www.youtube.com/embed/${videoID}?enablejsapi=1&origin=${window.location.origin}`;
+  } catch (error) {
+    console.error("Error processing YouTube URL:", error);
+    return null;
+  }
+}
 
 
 //
@@ -45,7 +82,8 @@ function App() {
   // TROPHY / STATS / JOKES / ETC. STATE
   const [timeSinceTrophy, setTimeSinceTrophy] = useState("");
   const [funnyStat, setFunnyStat] = useState("");
-  const [heroImage, setHeroImage] = useState("");
+  const [heroImages, setHeroImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [statsJokes, setStatsJokes] = useState([]);
   const [results, setResults] = useState([]);
   const [embarrassingResult, setEmbarrassingResult] = useState(null);
@@ -53,6 +91,8 @@ function App() {
   const [randomSigning, setRandomSigning] = useState(null);
   const [dvdClips, setDvdClips] = useState([]);
   const [spursClip, setSpursClip] = useState("");
+  const [prevIndex, setPrevIndex] = useState(null);
+
 
   //
   // INITIAL FETCH & AUTH LISTENER
@@ -68,17 +108,15 @@ function App() {
     // Fetch Firestore data
     const fetchData = async () => {
       try {
-        // Hero images
-        const heroSnap = await getDocs(collection(db, "heroImages"));
-        const heroUrls = heroSnap.docs.map((doc) => doc.data().url);
-        if (heroUrls.length > 0) {
-          const randomIndex = Math.floor(Math.random() * heroUrls.length);
-          setHeroImage(heroUrls[randomIndex]);
-        }
+     // Hero images
+const heroSnap = await getDocs(collection(db, "heroImages"));
+const heroData = heroSnap.docs.map((doc) => doc.data());
+setHeroImages(heroData);
+
 
         // Stats / Jokes
         const statsSnap = await getDocs(collection(db, "statsJokes"));
-        const statsArray = statsSnap.docs.map((doc) => doc.data().text);
+        const statsArray = statsSnap.docs.map((doc) => doc.data().content);
         setStatsJokes(statsArray);
 
         // Embarrassing Results
@@ -130,7 +168,19 @@ function App() {
       unsubscribe();
     };
   }, []);
-
+  useEffect(() => {
+    if (heroImages.length === 0) return;
+  
+    const interval = setInterval(() => {
+      setPrevIndex(currentIndex);
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 10000);
+  
+    return () => clearInterval(interval);
+  }, [heroImages, currentIndex]);
+  
+  
+  
   //
   // LOGOUT
   //
@@ -167,9 +217,12 @@ function App() {
   const showRandomSpursClip = () => {
     if (dvdClips.length === 0) return;
     const randomIndex = Math.floor(Math.random() * dvdClips.length);
-    setSpursClip(dvdClips[randomIndex]);
+    const rawURL = dvdClips[randomIndex];
+    const formatted = createEmbedURL(rawURL);
+    setSpursClip(formatted);
     playRandomSound();
   };
+  
 
   //
   // RENDER ROUTES
@@ -222,31 +275,57 @@ import TrophyCabinet from "./pages/TrophyCabinet";
       <Route
         path=""
         element={
-
-          <div className="container">
+          <>
             {/* HEADER BANNER */}
-<div className="site-header">
+            <div className="site-header">
   <div className="header-inner">
     <img src="/logo.png" alt="Spurs Logo" className="header-logo" />
     <div className="header-text">
-      <h1>It's Who We Are Mate</h1>
-      <p>The Tottenham Mausoleum</p>
+      <h1>The History of the Tottenham</h1>
+      <p className="tagline">The Tottenham Mausoleum</p>
+    </div>
+  </div>
+</div>
+        
+            <div className="container">
+              <div className="ad-slot">
+                <img
+                  src="/ads/no-cup.png"
+                  alt="NoCup Finance Ad"
+                  className="ad-banner"
+                  style={{ width: "100%", maxWidth: "728px", height: "auto" }}
+                />
+              </div>
+        
+              {heroImages.length > 0 && (
+                <div className="hero-rotation-wrapper">
+                  {prevIndex !== null && (
+                    <img
+                    src={heroImages[currentIndex].url}
+                    alt="Hero"
+                    className="hero-img fade-in"
+                  />
+                  )}
+                  ...
+        
+    <img
+      src={heroImages[currentIndex].url}
+      alt="Spurs Hero"
+      className="hero-img fade-in"
+      key={`current-${currentIndex}`}
+    />
+<div className="news-ticker">
+  <div className="ticker-track">
+    <div className="ticker-item">
+      🐓 {heroImages[currentIndex]?.headline}
     </div>
   </div>
 </div>
 
-<div className="ad-slot">
-  <img
-    src="/ads/no-cup.png"
-    alt="NoCup Finance Ad"
-    className="ad-banner"
-    style={{ width: "100%", maxWidth: "728px", height: "auto" }}
-  />
-</div>
+  </div>
+)}
 
-            {heroImage && (
-              <img src={heroImage} alt="Spurs Banter" className="hero-img" />
-            )}
+
 
 <div className="title-banner">
   <img src="/logo.png" alt="Spurs Logo Left" className="title-logo" />
@@ -410,14 +489,14 @@ import TrophyCabinet from "./pages/TrophyCabinet";
             <footer className="site-footer">
   <p>
     © 2025{" "}
-    <a href="https://itswhowearemate.com" target="_blank" rel="noopener noreferrer">
-      itswhowearemate.com
+    <a href="https://thehistoryofthetottenham.com" target="_blank" rel="noopener noreferrer">
+      thehistoryofthetottenham.com
     </a>{" "}
     — No trophies were harmed in the making of this site.
   </p>
   <p>
     <a
-      href="https://github.com/teknotel17/its-who-we-are-mate"
+      href="https://github.com/teknotel17/the-history-of-the-tottenham"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -428,13 +507,14 @@ import TrophyCabinet from "./pages/TrophyCabinet";
   <p>
     <a href="/privacy-policy">Privacy Policy</a> |{" "}
     <a href="/terms-of-use">Terms of Use</a> |{" "}
-    <a href="mailto:info@itswhowearemate.com">Contact</a>
+    <a href="mailto:info@thehistoryofthetottenham.com">Contact</a>
   </p>
 </footer>
 
-          </div>
-        }
-      />
+</div>
+    </>
+  }
+/>
        {/* NEW LEGAL ROUTES */}
   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
   <Route path="/terms-of-use" element={<TermsOfUse />} />
