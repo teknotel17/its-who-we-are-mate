@@ -1,4 +1,4 @@
-// src/utils/banterFacts.js
+// src/utils/banterfacts.js
 const facts = [
     "Tottenham have finished 4th more times than they've won major trophies this century.",
     "The Spurs trophy cabinet is so empty, archaeologists use it to study ancient dust.",

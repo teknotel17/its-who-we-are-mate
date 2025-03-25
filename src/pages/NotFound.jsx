@@ -1,7 +1,7 @@
 // src/pages/NotFound.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { getRandomFact } from "../utils/banterFacts";
+import { getRandomFact } from "../utils/banterfacts";
 
 const NotFound = () => {
   const [fact, setFact] = useState("");
