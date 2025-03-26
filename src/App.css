@@ -743,3 +743,24 @@ h1 {
     padding: 0.5rem;
   }
 }
+.mute-toggle-button {
+  background-color: #facc15; /* Golden yellow */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 12px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.7rem 2rem;
+  margin: 1.2rem auto; /* Centered and spaced nicely */
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.mute-toggle-button:hover {
+  background-color: #fcd34d;
+}

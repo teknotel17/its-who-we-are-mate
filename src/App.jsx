@@ -64,9 +64,11 @@ function createEmbedURL(youtubeURL) {
 
 //
 // SOUND EFFECTS LOGIC
-//
 let soundIndex = 0;
-const playRandomSound = () => {
+
+const playRandomSound = (isMuted) => {
+  if (isMuted) return;
+
   const sounds = [
     "/sounds/who-mate.mp3",
     "/sounds/sad-trombone.mp3",
@@ -97,7 +99,10 @@ function App() {
   const [spursClip, setSpursClip] = useState("");
   const [prevIndex, setPrevIndex] = useState(null);
   const [currentClipIndex, setCurrentClipIndex] = useState(0);
-
+  const [isMuted, setIsMuted] = useState(() => {
+    return localStorage.getItem('mute') === 'true';
+  });
+  
 
 
   //
@@ -203,21 +208,21 @@ setHeroImages(heroData);
     if (statsJokes.length === 0) return;
     const randomIndex = Math.floor(Math.random() * statsJokes.length);
     setFunnyStat(statsJokes[randomIndex]);
-    playRandomSound();
+    playRandomSound(isMuted);
   };
 
   const showEmbarrassingResult = () => {
     if (results.length === 0) return;
     const randomIndex = Math.floor(Math.random() * results.length);
     setEmbarrassingResult(results[randomIndex]);
-    playRandomSound();
+    playRandomSound(isMuted);
   };
 
   const showRandomSigning = () => {
     if (signings.length === 0) return;
     const randomIndex = Math.floor(Math.random() * signings.length);
     setRandomSigning(signings[randomIndex]);
-    playRandomSound();
+    playRandomSound(isMuted);
   };
 
   const showNextSpursClip = () => {
@@ -229,7 +234,7 @@ setHeroImages(heroData);
     const rawURL = dvdClips[nextIndex];
     const formatted = createEmbedURL(rawURL);
     setSpursClip(formatted);
-    playRandomSound(); // keep this if you still want a sound on each click
+    playRandomSound(isMuted); // keep this if you still want a sound on each click
   };
   
   
@@ -364,7 +369,14 @@ import TrophyCabinet from "./pages/TrophyCabinet";
             <a href="/trophy-cabinet" className="trophy-link">
               🏆 Visit Tottenham’s Trophy Cabinet
             </a>
-
+            <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+  <button
+    className="mute-toggle-button"
+    onClick={() => setIsMuted(!isMuted)}
+  >
+    {isMuted ? "TURN SOUND ON 🔈" : "TURN SOUND OFF 🔇"}
+  </button>
+</div>
             <div className="button-stack">
               <button
                 className="stat-button"
@@ -450,7 +462,6 @@ import TrophyCabinet from "./pages/TrophyCabinet";
   </div>
 )}
 
-
 <div className="ad-slot">
   <img
     src="/ads/no-cup.png"
@@ -476,7 +487,7 @@ import TrophyCabinet from "./pages/TrophyCabinet";
               >
                 Play spurs classic dvd's
               </button>
-
+             
               {spursClip && (
                <div className="video-wrapper">
                <div className="tv-frame">
@@ -490,6 +501,7 @@ import TrophyCabinet from "./pages/TrophyCabinet";
                    allowFullScreen
                  ></iframe>
                </div>
+               
                <div className="dvd-tray">💿 Spurs DVD Player 3000™</div>
              </div>
              

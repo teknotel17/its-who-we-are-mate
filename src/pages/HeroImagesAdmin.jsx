@@ -12,8 +12,11 @@ import {
 const HeroImagesAdmin = () => {
   const [heroImages, setHeroImages] = useState([]);
   const [newHeroURL, setNewHeroURL] = useState("");
+  const [newHeroHeadline, setNewHeroHeadline] = useState("");
   const [editURL, setEditURL] = useState("");
   const [editDocId, setEditDocId] = useState(null);
+  const [editHeadline, setEditHeadline] = useState("");
+
 
   // Fetch all heroImages docs on initial load
   useEffect(() => {
@@ -35,13 +38,17 @@ const HeroImagesAdmin = () => {
 
   const handleAddHeroImage = async (e) => {
     e.preventDefault();
-    if (!newHeroURL.trim()) return;
-
+    if (!newHeroURL.trim() || !newHeroHeadline.trim()) return;
+  
     try {
-      // Add a new document with { url: "..." }
-      await addDoc(collection(db, "heroImages"), { url: newHeroURL });
+      await addDoc(collection(db, "heroImages"), {
+        url: newHeroURL,
+        headline: newHeroHeadline,
+        createdAt: new Date().toISOString(),
+      });
       setNewHeroURL("");
-      await fetchHeroImages(); // Refresh list
+      setNewHeroHeadline("");
+      await fetchHeroImages();
     } catch (error) {
       console.error("Error adding hero image:", error);
     }
@@ -56,24 +63,31 @@ const HeroImagesAdmin = () => {
     }
   };
 
-  const startEdit = (id, currentURL) => {
+  const startEdit = (id, currentURL, currentHeadline) => {
     setEditDocId(id);
     setEditURL(currentURL);
+    setEditHeadline(currentHeadline || "");
   };
+  
 
   const handleEdit = async (e) => {
     e.preventDefault();
     if (!editURL.trim()) return;
-
+  
     try {
-      await updateDoc(doc(db, "heroImages", editDocId), { url: editURL });
+      await updateDoc(doc(db, "heroImages", editDocId), {
+        url: editURL,
+        headline: editHeadline,
+      });
       setEditDocId(null);
       setEditURL("");
+      setEditHeadline("");
       await fetchHeroImages();
     } catch (error) {
       console.error("Error updating hero image:", error);
     }
   };
+  
 
   return (
     <div style={{ padding: "1rem" }}>
@@ -81,36 +95,46 @@ const HeroImagesAdmin = () => {
 
       {/* Add new hero image */}
       <form onSubmit={handleAddHeroImage} style={{ marginBottom: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Image URL"
-          value={newHeroURL}
-          onChange={(e) => setNewHeroURL(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <button type="submit">Add</button>
-      </form>
+  <input
+    type="text"
+    placeholder="Image URL"
+    value={newHeroURL}
+    onChange={(e) => setNewHeroURL(e.target.value)}
+    style={{ marginRight: "0.5rem" }}
+  />
+  <input
+    type="text"
+    placeholder="Headline"
+    value={newHeroHeadline}
+    onChange={(e) => setNewHeroHeadline(e.target.value)}
+    style={{ marginRight: "0.5rem" }}
+  />
+  <button type="submit">Add</button>
+</form>
+
 
       {/* List existing */}
       {heroImages.map((item) => (
         <div key={item.id} style={{ marginBottom: "0.5rem" }}>
           {editDocId === item.id ? (
-            <form onSubmit={handleEdit}>
-              <input
-                type="text"
-                value={editURL}
-                onChange={(e) => setEditURL(e.target.value)}
-                style={{ marginRight: "0.5rem" }}
-              />
-              <button type="submit">Save</button>
-              <button
-                type="button"
-                onClick={() => setEditDocId(null)}
-                style={{ marginLeft: "0.5rem" }}
-              >
-                Cancel
-              </button>
-            </form>
+         <form onSubmit={handleEdit}>
+         <input
+           type="text"
+           value={editURL}
+           onChange={(e) => setEditURL(e.target.value)}
+           placeholder="Image URL"
+           style={{ marginRight: "0.5rem" }}
+         />
+         <input
+           type="text"
+           value={editHeadline}
+           onChange={(e) => setEditHeadline(e.target.value)}
+           placeholder="Headline"
+           style={{ marginRight: "0.5rem" }}
+         />
+         <button type="submit">Save</button>
+         <button type="button" onClick={() => setEditDocId(null)}>Cancel</button>
+       </form>
           ) : (
             <>
               <img
@@ -118,9 +142,13 @@ const HeroImagesAdmin = () => {
                 alt="hero"
                 style={{ width: "60px", marginRight: "1rem" }}
               />
-              {item.url}
+              <div style={{ display: "inline-block", verticalAlign: "top" }}>
+  <div><strong>URL:</strong> {item.url}</div>
+  <div><strong>Headline:</strong> {item.headline || "(none)"}</div>
+</div>
+
               <button
-                onClick={() => startEdit(item.id, item.url)}
+               onClick={() => startEdit(item.id, item.url, item.headline)}
                 style={{ marginLeft: "1rem" }}
               >
                 Edit
