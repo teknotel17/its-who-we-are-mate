@@ -34,6 +34,9 @@ A rigorously documented multimedia museum chronicling the long and storied tradi
 - 🏆 **Trophy Cabinet Simulator (404)**  
   Explore the emptiest interactive experience on the web. Not found — much like their silverware since 1991.
 
+- ⚽ **Legendary XI Generator™** **NEW**
+  Build your ultimate line-up of Spurs "legends" with a single click. Watch as forgotten fullbacks, one-season wonders, and midfielders who once looked decent on Match of the Day get randomly selected to represent Tottenham’s finest... allegedly. Reroll any player, download your shameful squad, and share it with mates who still believe it’s their year.
+
 ---
 
 ## 🧪 Tech Stack (more reliable than Spurs' back four)
