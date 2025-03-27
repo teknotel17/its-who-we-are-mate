@@ -18,6 +18,9 @@ import TrophyCabinet from "./pages/TrophyCabinet";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
+import RandomXI from "./pages/RandomXI";
+import SocialSharingButtons from "./components/SocialSharingButtons";
+
 
 // Vercel Analytics
 import { Analytics } from '@vercel/analytics/react';
@@ -103,6 +106,10 @@ function App() {
     return localStorage.getItem('mute') === 'true';
   });
   
+  const [recentSignings, setRecentSignings] = useState([]);
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
+const [imageA, setImageA] = useState({src: '', visible: true});
+const [imageB, setImageB] = useState({src: '', visible: false});
 
 
   //
@@ -180,17 +187,39 @@ setHeroImages(heroData);
     };
   }, []);
   useEffect(() => {
-    if (heroImages.length === 0) return;
+    if (heroImages.length > 0) {
+      // Initialize both images with the first hero image
+      setImageA({src: heroImages[0].url, visible: true});
+      setImageB({src: heroImages[0].url, visible: false});
+      setActiveImageIdx(0);
+    }
+  }, [heroImages]);
   
+  useEffect(() => {
+    if (heroImages.length < 2) return;
+    
     const interval = setInterval(() => {
-      setPrevIndex(currentIndex);
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-    }, 10000);
-  
+      // Calculate next image index
+      const nextIdx = (activeImageIdx + 1) % heroImages.length;
+      
+      // If A is visible, update B and make it visible
+      if (imageA.visible) {
+        setImageB({src: heroImages[nextIdx].url, visible: true});
+        setImageA({...imageA, visible: false});
+      } 
+      // If B is visible, update A and make it visible
+      else {
+        setImageA({src: heroImages[nextIdx].url, visible: true});
+        setImageB({...imageB, visible: false});
+      }
+      
+      // Update the active index
+      setActiveImageIdx(nextIdx);
+      
+    }, 10000); // Image changes every 10 seconds
+    
     return () => clearInterval(interval);
-  }, [heroImages, currentIndex]);
-  
-  
+  }, [heroImages, activeImageIdx, imageA, imageB]);
   
   //
   // LOGOUT
@@ -219,11 +248,25 @@ setHeroImages(heroData);
   };
 
   const showRandomSigning = () => {
-    if (signings.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * signings.length);
-    setRandomSigning(signings[randomIndex]);
+    const eligible = signings.filter(
+      (signing) =>
+        !signing.excludeFromSOTS && !recentSignings.includes(signing.name) // or signing.id if available
+    );
+  
+    if (eligible.length === 0) {
+      // Reset cooldown if all have been used recently
+      setRecentSignings([]);
+      return showRandomSigning(); // try again
+    }
+  
+    const randomIndex = Math.floor(Math.random() * eligible.length);
+    const chosen = eligible[randomIndex];
+  
+    setRandomSigning(chosen);
+    setRecentSignings((prev) => [...prev.slice(-19), chosen.name]); // or chosen.id
     playRandomSound(isMuted);
   };
+  
 
   const showNextSpursClip = () => {
     if (dvdClips.length === 0) return;
@@ -296,9 +339,9 @@ import TrophyCabinet from "./pages/TrophyCabinet";
   <div className="header-inner">
     <img src="/logo.png" alt="Spurs Logo" className="header-logo" />
     <div className="header-text">
-      <h1>The History of the Tottenham</h1>
-      <p className="tagline">The Tottenham Mausoleum</p>
-    </div>
+  <h1>THE HISTORY OF THE TOTTENHAM</h1>
+  <p className="tagline">The Tottenham Mausoleum</p>
+</div>
   </div>
 </div>
         
@@ -313,39 +356,37 @@ import TrophyCabinet from "./pages/TrophyCabinet";
               </div>
         
               {heroImages.length > 0 && (
-                <div className="hero-rotation-wrapper">
-                  {prevIndex !== null && (
-                    <img
-                    src={heroImages[currentIndex].url}
-                    alt="Hero"
-                    className="hero-img fade-in"
-                  />
-                  )}
-                  ...
-        
+  <div className="hero-rotation-wrapper">
+    {/* Image A */}
     <img
-      src={heroImages[currentIndex].url}
-      alt="Spurs Hero"
-      className="hero-img fade-in"
-      key={`current-${currentIndex}`}
+      src={imageA.src}
+      alt="Hero"
+      className={`hero-img ${imageA.visible ? 'img-visible' : 'img-hidden'}`}
     />
-<div className="news-ticker">
-  <div className="ticker-track">
-    <div className="ticker-item">
-      🐓 {heroImages[currentIndex]?.headline}
+    
+    {/* Image B */}
+    <img
+      src={imageB.src}
+      alt="Hero"
+      className={`hero-img ${imageB.visible ? 'img-visible' : 'img-hidden'}`}
+    />
+    
+    <div className="news-ticker">
+      <div className="ticker-track">
+        <div className="ticker-item">
+          🐓 {heroImages[activeImageIdx]?.headline}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   </div>
 )}
 
+{/* Social Sharing Buttons */}
+<SocialSharingButtons />
 
-
-<div className="title-banner">
-  <img src="/logo.png" alt="Spurs Logo Left" className="title-logo" />
-  <h1 className="title-text">How Long Has It Been Since Spurs Won a Trophy?</h1>
-  <img src="/logo.png" alt="Spurs Logo Right" className="title-logo" />
+<div className="dvd-header timer-header">
+  <h2>⏱️ How Long Has It Been Since Spurs Won a Trophy?</h2>
+  <div className="dvd-badge">Going for a record</div>
 </div>
 
 
@@ -355,6 +396,23 @@ import TrophyCabinet from "./pages/TrophyCabinet";
   </h2>
   <p className="subtext">Spoiler: It’s been a while.</p>
 </div>
+
+<button
+    className="mute-toggle-button"
+    onClick={() => setIsMuted(!isMuted)}
+  >
+    {isMuted ? "TURN SOUND ON 🔈" : "TURN SOUND OFF 🔇"}
+  </button>
+</div>
+
+<div className="dvd-header">
+  <h2>💩 Tottenham Legendary XI Generator</h2>
+  <div className="dvd-badge">Click any shirt to reroll</div>
+</div>
+
+
+<RandomXI playRandomSound={playRandomSound} isMuted={isMuted} />
+
 
             <div className="ad-slot">
   <img
@@ -366,17 +424,13 @@ import TrophyCabinet from "./pages/TrophyCabinet";
 </div>
 
 
-            <a href="/trophy-cabinet" className="trophy-link">
-              🏆 Visit Tottenham’s Trophy Cabinet
-            </a>
-            <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-  <button
-    className="mute-toggle-button"
-    onClick={() => setIsMuted(!isMuted)}
-  >
-    {isMuted ? "TURN SOUND ON 🔈" : "TURN SOUND OFF 🔇"}
-  </button>
+<div className="timer-box trophy-cabinet-box">
+  <a href="/trophy-cabinet" className="trophy-link">
+    🏆 Visit Tottenham's Trophy Cabinet
+  </a>
 </div>
+            <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+  
             <div className="button-stack">
               <button
                 className="stat-button"
@@ -421,14 +475,9 @@ import TrophyCabinet from "./pages/TrophyCabinet";
                 </div>
               )}
 
-              <button
-                className="signing-button"
-                onClick={() => {
-                  showRandomSigning();
-                }}
-              >
-                Show me a signing of the season
-              </button>
+<button className="signing-button last-button" onClick={() => { showRandomSigning(); }}>
+  Show me a signing of the season
+</button>
             </div>
 
             {randomSigning && (

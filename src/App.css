@@ -34,28 +34,30 @@ body::before {
 }
 
 
-/* Main Container */
+/* Main Container - Modified to be transparent */
 .container {
   display: flex;
   flex-direction: column;
-  width: 1000px;  /* Fixed width */
+  width: 1000px;  /* Keep the width */
   min-width: 1000px;
   max-width: 1000px;
   margin: 0 auto;
-  background-color: white;
+  /* Remove the background-color or set to transparent */
+  background-color: transparent;
   padding: 1rem 2rem;
   box-sizing: border-box;
-  flex-shrink: 0;  /* Prevents flexbox from shrinking the container */
+  flex-shrink: 0;  /* Keeps preventing flexbox from shrinking the container */
 }
 
 
 
 /* Header Banner */
 .site-header {
-  background: linear-gradient(to bottom, #1e3a8a, #152a62);
+  background: linear-gradient(to right, #3b82f6, #1e3a8a);
   padding: 1.5rem 2rem;
   border-radius: 0;
-  border-bottom: 3px solid #facc15;
+  border-left: 5px solid #facc15;
+  border-bottom: 5px solid #facc15;
   margin: 0 auto;
   margin-bottom: 0; /* remove any bottom space */
   max-width: 1000px; /* Match the container */
@@ -63,7 +65,6 @@ body::before {
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
 
 
 
@@ -94,10 +95,13 @@ body::before {
 }
 
 .tagline {
-  font-style: italic;
-  font-size: 1rem;
-  color: #cbd5e1;
-  margin-top: 0.25rem;
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 1.2rem !important; /* Adjusted to be between 0.6 and 0.8 */
+  color: #ffffff;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  /* Removed the transform scale */
 }
 
 
@@ -165,19 +169,27 @@ h1 {
 }
 
 
+.trophy-cabinet-box {
+  background-color: #f1f5f9;
+  border: 2px dashed #1e3a8a;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+  text-align: center;
+}
 
-/* Trophy Cabinet Link */
+/* Update the trophy-link style to match */
 .trophy-link {
   display: block;
   font-size: 1.6rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
   color: #1e3a8a;
   font-weight: bold;
   text-decoration: none;
-  font-family: 'Fira Mono', monospace; /* retro ironic font */
+  font-family: 'Fira Mono', monospace;
   text-align: center;
+  margin: 0; /* Remove margin since the box now has padding */
 }
+
 
 .trophy-link:hover {
   color: #2563eb;
@@ -214,6 +226,7 @@ h1 {
   text-transform: uppercase;
   display: block;
   margin: 1rem auto;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -231,7 +244,7 @@ h1 {
   background-color: #f8fafc;
   border-left: 4px solid #1e3a8a;
   padding: 0.75rem 1rem;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   border-radius: 6px;
   line-height: 1.6;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
@@ -251,7 +264,7 @@ h1 {
   border-bottom: 4px solid #facc15;
   padding: 1rem;
   border-radius: 6px;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -302,7 +315,7 @@ h1 {
   background-color: #f8fafc;
   border-left: 4px solid #facc15;
   border-bottom: 4px solid #facc15;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
@@ -496,20 +509,15 @@ h1 {
   display: block;
 }
 .title-banner {
-  background: linear-gradient(to right, #1e3a8a, #1c2f80);
-  padding: 1.5rem 2rem; /* Slightly more padding for centering */
-  border-radius: 10px;
-  display: flex;
-  align-items: center; /* Align vertically */
-  justify-content: center;
-  gap: 1rem;
-  color: white;
-  margin-top: 1.5rem;
-  text-align: center;
+  background: linear-gradient(to right, #3b82f6, #1e3a8a);
+  padding: 1rem 1.5rem;
   border-left: 5px solid #facc15;
   border-bottom: 5px solid #facc15;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  border-radius: 6px;
+  color: white;
+  margin: 1.5rem 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
 }
 
 
@@ -549,6 +557,9 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   color: #1e40af;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.4;
 }
 .dvd-header {
   background: linear-gradient(to right, #3b82f6, #1e3a8a);
@@ -657,13 +668,13 @@ h1 {
 
 .hero-rotation-wrapper {
   position: relative;
-  width: calc(100% + 4rem);  /* Compensate for container's 2rem padding on each side */
-  margin-left: -2rem;  /* Offset to match container's left padding */
-  margin-right: -2rem;  /* Offset to match container's right padding */
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
   padding-top: 56.25%;
   border-radius: 0px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero-img {
@@ -675,20 +686,17 @@ h1 {
   object-fit: cover;
   border-radius: 0px;
   transition: opacity 1s ease-in-out;
-  opacity: 0;
-  z-index: 1;
 }
 
-.fade-in {
+.img-visible {
   opacity: 1;
   z-index: 2;
 }
 
-.fade-out {
+.img-hidden {
   opacity: 0;
   z-index: 1;
 }
-
 .news-ticker {
   width: calc(100% + 4rem);
   margin-left: -2rem;
@@ -743,6 +751,17 @@ h1 {
     width: 100%;
     padding: 0.5rem;
   }
+  
+  .trophy-timer {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+  
+  .timer-box {
+    padding: 0.8rem;
+  }
 }
 .mute-toggle-button {
   background-color: #facc15; /* Golden yellow */
@@ -764,4 +783,89 @@ h1 {
 
 .mute-toggle-button:hover {
   background-color: #fcd34d;
+}
+/* Social Sharing Buttons */
+.social-sharing-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: calc(100% + 4rem); /* Match the hero image width formula */
+  margin-left: -2rem;
+  margin-right: -2rem;
+  box-sizing: border-box;
+}
+
+.social-sharing-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make sure buttons stay aligned on mobile */
+@media (max-width: 480px) {
+  .social-sharing-buttons {
+    gap: 8px;
+  }
+  
+  .social-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+@keyframes fadeInPlayerContent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.player-content-fade {
+  animation: fadeInPlayerContent 0.5s ease;
+}
+.player-content-fade {
+  animation: fadeInPlayerContent 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%; /* 👈 Ensure it fills the shirt box */
+  padding-bottom: 4px; /* match outer box padding */
+}
+.timer-header {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  box-sizing: border-box;
+}
+.last-button {
+  margin-bottom: 3rem !important; /* Force extra space below this button */
 }

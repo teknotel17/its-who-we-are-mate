@@ -22,6 +22,8 @@ function SigningsAdmin() {
   const [newAssists, setNewAssists] = useState("");
   const [newImage, setNewImage] = useState("");
   const [newBio, setNewBio] = useState("");
+  const [newPosition, setNewPosition] = useState("");
+  const [newExclude, setNewExclude] = useState(false);
 
   // EDIT
   const [editDocId, setEditDocId] = useState(null);
@@ -34,6 +36,8 @@ function SigningsAdmin() {
   const [editAssists, setEditAssists] = useState("");
   const [editImage, setEditImage] = useState("");
   const [editBio, setEditBio] = useState("");
+const [editPosition, setEditPosition] = useState("");
+const [editExclude, setEditExclude] = useState(false);
 
   useEffect(() => {
     fetchSignings();
@@ -69,6 +73,9 @@ function SigningsAdmin() {
       assists: Number(newAssists) || 0,
       image: newImage,
       bio: newBio,
+      position: newPosition,
+      excludeFromSOTS: newExclude,
+
     };
 
     try {
@@ -112,6 +119,9 @@ function SigningsAdmin() {
     setEditAssists(item.assists || "");
     setEditImage(item.image || "");
     setEditBio(item.bio || "");
+    setEditPosition(item.position || "");
+    setEditExclude(item.excludeFromSOTS || false);
+
   };
 
   // UPDATE
@@ -129,6 +139,9 @@ function SigningsAdmin() {
       assists: Number(editAssists) || 0,
       image: editImage,
       bio: editBio,
+      position: editPosition,
+      excludeFromSOTS: editExclude,
+
     };
 
     try {
@@ -156,72 +169,90 @@ function SigningsAdmin() {
       <h3>Signings Admin</h3>
 
       {/* CREATE - Add new signing */}
-      <form onSubmit={handleAddSigning} style={{ marginBottom: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={newName}
-          onChange={(e) => setNewName(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <input
-          type="text"
-          placeholder="Wiki Link"
-          value={newWiki}
-          onChange={(e) => setNewWiki(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <input
-          type="text"
-          placeholder="Year"
-          value={newYear}
-          onChange={(e) => setNewYear(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <input
-          type="text"
-          placeholder="Fee"
-          value={newFee}
-          onChange={(e) => setNewFee(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <input
-          type="number"
-          placeholder="Apps"
-          value={newApps}
-          onChange={(e) => setNewApps(e.target.value)}
-          style={{ marginRight: "0.5rem", width: "70px" }}
-        />
-        <input
-          type="number"
-          placeholder="Goals"
-          value={newGoals}
-          onChange={(e) => setNewGoals(e.target.value)}
-          style={{ marginRight: "0.5rem", width: "70px" }}
-        />
-        <input
-          type="number"
-          placeholder="Assists"
-          value={newAssists}
-          onChange={(e) => setNewAssists(e.target.value)}
-          style={{ marginRight: "0.5rem", width: "70px" }}
-        />
-        <input
-          type="text"
-          placeholder="Image URL"
-          value={newImage}
-          onChange={(e) => setNewImage(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <input
-          type="text"
-          placeholder="Bio"
-          value={newBio}
-          onChange={(e) => setNewBio(e.target.value)}
-          style={{ marginRight: "0.5rem" }}
-        />
-        <button type="submit">Add Signing</button>
-      </form>
+      <form onSubmit={handleAddSigning} style={{ marginBottom: "1rem", display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+  <input
+    type="text"
+    placeholder="Name"
+    value={newName}
+    onChange={(e) => setNewName(e.target.value)}
+  />
+  <input
+    type="text"
+    placeholder="Wiki Link"
+    value={newWiki}
+    onChange={(e) => setNewWiki(e.target.value)}
+  />
+  <input
+    type="text"
+    placeholder="Year"
+    value={newYear}
+    onChange={(e) => setNewYear(e.target.value)}
+  />
+  <input
+    type="text"
+    placeholder="Fee"
+    value={newFee}
+    onChange={(e) => setNewFee(e.target.value)}
+  />
+  <input
+    type="number"
+    placeholder="Apps"
+    value={newApps}
+    onChange={(e) => setNewApps(e.target.value)}
+    style={{ width: "70px" }}
+  />
+  <input
+    type="number"
+    placeholder="Goals"
+    value={newGoals}
+    onChange={(e) => setNewGoals(e.target.value)}
+    style={{ width: "70px" }}
+  />
+  <input
+    type="number"
+    placeholder="Assists"
+    value={newAssists}
+    onChange={(e) => setNewAssists(e.target.value)}
+    style={{ width: "70px" }}
+  />
+  <input
+    type="text"
+    placeholder="Image URL"
+    value={newImage}
+    onChange={(e) => setNewImage(e.target.value)}
+  />
+  <input
+    type="text"
+    placeholder="Bio"
+    value={newBio}
+    onChange={(e) => setNewBio(e.target.value)}
+  />
+
+  {/* ✅ Position Dropdown */}
+  <select
+    value={newPosition}
+    onChange={(e) => setNewPosition(e.target.value)}
+    required
+  >
+    <option value="">Select Position</option>
+    <option value="GK">GK</option>
+    <option value="DF">DF</option>
+    <option value="MD">MD</option>
+    <option value="AT">AT</option>
+  </select>
+  <label>
+  <input
+    type="checkbox"
+    checked={newExclude}
+    onChange={(e) => setNewExclude(e.target.checked)}
+    style={{ marginRight: "0.3rem" }}
+  />
+  Exclude from Signing of the Season
+</label>
+
+  <button type="submit">Add Signing</button>
+</form>
+
 
       {/* READ & UPDATE */}
       {signings.map((item) => (
@@ -277,6 +308,27 @@ function SigningsAdmin() {
                 value={editBio}
                 onChange={(e) => setEditBio(e.target.value)}
               />
+              <select
+  value={editPosition}
+  onChange={(e) => setEditPosition(e.target.value)}
+  required
+>
+  <option value="">Select Position</option>
+  <option value="GK">GK</option>
+  <option value="DF">DF</option>
+  <option value="MD">MD</option>
+  <option value="AT">AT</option>
+</select>
+<label>
+  <input
+    type="checkbox"
+    checked={editExclude}
+    onChange={(e) => setEditExclude(e.target.checked)}
+    style={{ marginRight: "0.3rem" }}
+  />
+  Exclude from Signing of the Season
+</label>
+
               <button type="submit">Save</button>
               <button onClick={() => setEditDocId(null)}>Cancel</button>
             </form>
