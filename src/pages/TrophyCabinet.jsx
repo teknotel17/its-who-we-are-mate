@@ -34,9 +34,9 @@ const TrophyCabinet = () => {
 
   return (
     <div
-      style={{
-        backgroundColor: "#ffffff",
-        color: "#111827",
+    style={{
+      backgroundColor: "transparent",
+      color: "#111827",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
