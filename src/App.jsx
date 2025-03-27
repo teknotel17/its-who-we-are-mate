@@ -333,7 +333,7 @@ jsxCopy      {/* ADMIN ROUTE (PROTECTED) */}
     <img src="/logo.png" alt="Spurs Logo" className="header-logo" />
     <div className="header-text">
   <h1>THE HISTORY OF THE TOTTENHAM</h1>
-  <p className="tagline">The Tottenham Mausoleum</p>
+  <p className="tagline">The Spurs Mausoleum</p>
 </div>
   </div>
 </div>
