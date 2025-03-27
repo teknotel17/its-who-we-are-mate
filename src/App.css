@@ -237,8 +237,8 @@ h1 {
 }
 
 .stat-text {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 500;
   font-family: 'Fira Mono', monospace;
   color: #0f172a;
   background-color: #f8fafc;
@@ -248,10 +248,18 @@ h1 {
   border-radius: 6px;
   line-height: 1.6;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 100%;
+  
+  /* Fix overflow properties */
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: break-word;
+  
+  /* Constrain width */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  /* Center text */
   text-align: center;
 }
 
@@ -591,30 +599,14 @@ h1 {
   font-family: 'Press Start 2P', monospace;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
-.stat-text {
-  font-size: 1.3rem;
-  font-weight: 500;
-  font-family: 'Fira Mono', monospace;
-  color: #0f172a;
-  background-color: #f8fafc;
-  border-left: 4px solid #facc15;
-  padding: 0.75rem 1rem;
-  margin-top: 1.5rem;
-  border-radius: 6px;
-  line-height: 1.6;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 
-  /* ✅ REMOVE the overflow + nowrap behaviour */
-  white-space: normal;
-  overflow: visible;
-
-  /* ✅ Add good wrapping + sizing */
-  word-break: break-word;
+/* Add this class to the entire button stack and content container */
+.content-container {
+  width: 100%;
   max-width: 100%;
+  overflow-x: hidden;
   box-sizing: border-box;
-  display: block;
 }
-
   
 
 
@@ -868,4 +860,35 @@ h1 {
 }
 .last-button {
   margin-bottom: 3rem !important; /* Force extra space below this button */
+}
+/* Transparent container to match main container styles but for lower sections */
+.transparent-container {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  min-width: 1000px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Media query adjustments */
+@media (max-width: 1024px) {
+  .transparent-container {
+    width: 95%;
+    min-width: auto;
+    max-width: none;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .transparent-container {
+    width: 100%;
+    padding: 0.5rem;
+  }
 }

@@ -301,7 +301,8 @@ setHeroImages(heroData);
         }
       />
 
-      {/* ADMIN ROUTE (PROTECTED) */}
+Yes, replace that entire code block with this:
+jsxCopy      {/* ADMIN ROUTE (PROTECTED) */}
       <Route
         path="admin"
         element={
@@ -318,16 +319,8 @@ setHeroImages(heroData);
         }
       />
 
-      {/* TROPHY CABINET ROUTE (OPTIONAL) */}
-      {/* 
-        If you need a separate route for /trophy-cabinet, define it here, e.g.:
-        <Route path="/trophy-cabinet" element={<TrophyCabinet404 />} />
-      */}
-import TrophyCabinet from "./pages/TrophyCabinet";
-
-// ...
-
-<Route path="/trophy-cabinet" element={<TrophyCabinet />} />
+      {/* TROPHY CABINET ROUTE */}
+      <Route path="/trophy-cabinet" element={<TrophyCabinet />} />
 
       {/* MAIN APP ROUTE */}
       <Route
@@ -412,7 +405,7 @@ import TrophyCabinet from "./pages/TrophyCabinet";
 
 
 <RandomXI playRandomSound={playRandomSound} isMuted={isMuted} />
-
+<div className="transparent-container">
 
             <div className="ad-slot">
   <img
@@ -584,6 +577,7 @@ import TrophyCabinet from "./pages/TrophyCabinet";
 <Analytics />
 
 
+</div>
 </div>
     </>
   }
